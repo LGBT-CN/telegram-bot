@@ -1,6 +1,10 @@
 # Telegram Bot
 
+## Usage
+
+> UNAVAILABLE!
+
 ## Functions
 
-- [ ] Automatically translation
+- [x] Automatically translation
 - [ ] etc.
