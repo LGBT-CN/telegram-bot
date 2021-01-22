@@ -44,8 +44,8 @@ namespace LGBTCN.Bot
         {
             var message = messageEventArgs.Message;
 
-            if (message.Chat.Username != Configuration.ALLOW_USERNAME &&
-                message.From.Id != Configuration.DEBUGGER_ID)
+            if (!Configuration.ALLOW_USERNAME.Contains(message.Chat.Username) &&
+                !Configuration.DEBUGGER_ID.Contains(message.From.Id))
             {
                 Log.E("main.msg", $"Not allowed group! {{\"id\":{message.Chat.Id}," +
                     $"\"title\":\"{message.Chat.Title}\"," +
