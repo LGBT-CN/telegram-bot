@@ -44,7 +44,8 @@ namespace LGBTCN.Bot
         {
             var message = messageEventArgs.Message;
 
-            if (message.Chat.Username != Text.ALLOW_USERNAME && message.From.Id != Text.DEBUGGER_ID)
+            if (message.Chat.Username != Configuration.ALLOW_USERNAME &&
+                message.From.Id != Configuration.DEBUGGER_ID)
             {
                 Log.E("main.msg", $"Not allowed group! {{\"id\":{message.Chat.Id}," +
                     $"\"title\":\"{message.Chat.Title}\"," +
@@ -136,7 +137,7 @@ namespace LGBTCN.Bot
                     result += "ZH: " + zh + "\n";
                 return result.Trim();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.E("main.translate", ex.ToString());
                 return Text.OOPS;
