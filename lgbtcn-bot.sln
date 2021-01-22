@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LGBT-CN Bot", "LGBT-CN Bot\LGBT-CN Bot.csproj", "{52010023-C30F-49A3-BD94-AB69A89691A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LGBT-CN Bot.Test", "LGBT-CN Bot.Test\LGBT-CN Bot.Test.csproj", "{7CCC0E12-4EA3-4566-A110-ABA5860B7F41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52010023-C30F-49A3-BD94-AB69A89691A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52010023-C30F-49A3-BD94-AB69A89691A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52010023-C30F-49A3-BD94-AB69A89691A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52010023-C30F-49A3-BD94-AB69A89691A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CCC0E12-4EA3-4566-A110-ABA5860B7F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CCC0E12-4EA3-4566-A110-ABA5860B7F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CCC0E12-4EA3-4566-A110-ABA5860B7F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CCC0E12-4EA3-4566-A110-ABA5860B7F41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD230EB0-8BEC-4ABC-A25D-CD936F20E2EC}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+.vs
+**/bin
+**/obj
+.vscode
+.idea
+**.secret
+**.key
