@@ -39,40 +39,49 @@ namespace LGBTCN.Bot
             Log.I("main", "Stop receiving.");
         }
 
-
         private static async void BotOnMessageReceived(object sender, MessageEventArgs messageEventArgs)
         {
             var message = messageEventArgs.Message;
 
+            if (!message.Text.StartsWith("/"))
+                return;
+
             if (!Configuration.ALLOW_USERNAME.Contains(message.Chat.Username) &&
                 !Configuration.DEBUGGER_ID.Contains(message.From.Id))
             {
-                Log.E("main.msg", $"Not allowed group! {{\"id\":{message.Chat.Id}," +
+                Log.E("main.msg", $"Not allowed group! {{\"group\":{{\"id\":{message.Chat.Id}," +
                     $"\"title\":\"{message.Chat.Title}\"," +
                     $"\"username\":\"{message.Chat.Username}\"," +
-                    $"\"type\":\"{message.Chat.Type}\"" +
+                    $"\"type\":\"{message.Chat.Type}\"}}," +
+                    $"\"sender\":{{" +
+                    $"\"id\":{message.From.Id}," +
+                    $"\"username\":\"{message.From.Username}\"," +
+                    $"\"nickname\":\"{message.From.FirstName},{message.From.LastName}\"" +
+                    $"}}" +
                     $"}}");
+                await SendMsg(message, Text.OOPS);
                 return;
             }
 
             if (message == null || message.Type != MessageType.Text)
                 return;
 
-            if (!message.Text.StartsWith("/"))
-                return;
-
             switch (message.Text.Split(' ').First())
             {
                 case "/translate":
+                case "/translate@LGBTCN_TBot":
                     await SendTranslate(message);
                     break;
                 case "/start":
+                case "/start@LGBTCN_TBot":
                     await SendMsg(message, "Hello");
                     break;
                 case "/debug":
+                case "/debug@LGBTCN_TBot":
                     await SendDebug(message);
                     break;
                 case "/about":
+                case "/about@LGBTCN_TBot":
                     await SendMsg(message, Text.ABOUT);
                     break;
                 default:
