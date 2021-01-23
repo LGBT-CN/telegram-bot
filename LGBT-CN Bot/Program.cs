@@ -50,7 +50,7 @@ namespace LGBTCN.Bot
                 Log.E("main.msg", $"Not allowed group! {{\"id\":{message.Chat.Id}," +
                     $"\"title\":\"{message.Chat.Title}\"," +
                     $"\"username\":\"{message.Chat.Username}\"," +
-                    $"\"type\":\"{message.Chat.Type}\"," +
+                    $"\"type\":\"{message.Chat.Type}\"" +
                     $"}}");
                 return;
             }
