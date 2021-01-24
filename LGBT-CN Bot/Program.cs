@@ -43,7 +43,7 @@ namespace LGBTCN.Bot
         {
             var message = messageEventArgs.Message;
 
-            if (!message.Text.StartsWith("/"))
+            if (message == null || !message.Text.StartsWith("/"))
                 return;
 
             if (!Configuration.ALLOW_USERNAME.Contains(message.Chat.Username) &&
