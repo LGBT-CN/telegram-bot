@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -43,7 +43,10 @@ namespace LGBTCN.Bot
         {
             var message = messageEventArgs.Message;
 
-            if (message == null || !message.Text.StartsWith("/"))
+            if (message == null || message.Text == null)
+                return;
+
+            if (!message.Text.StartsWith("/"))
                 return;
 
             if (!Configuration.ALLOW_USERNAME.Contains(message.Chat.Username) &&
@@ -63,7 +66,7 @@ namespace LGBTCN.Bot
                 return;
             }
 
-            if (message == null || message.Type != MessageType.Text)
+            if (message.Type != MessageType.Text)
                 return;
 
             switch (message.Text.Split(' ').First())
@@ -123,12 +126,27 @@ namespace LGBTCN.Bot
                 replyStr = await Task.Run(() => GetTransMsg(text));
                 replyMsgId = message.ReplyToMessage.MessageId;
             }
-            await _bot.SendTextMessageAsync(
-                    replyToMessageId: replyMsgId,
-                    chatId: message.Chat.Id,
-                    text: replyStr,
-                    replyMarkup: new ReplyKeyboardRemove()
-                );
+            try
+            {
+                await _bot.SendTextMessageAsync(
+                        replyToMessageId: replyMsgId,
+                        chatId: message.Chat.Id,
+                        text: replyStr,
+                        replyMarkup: new ReplyKeyboardRemove()
+                    );
+            }
+            catch (Exception ex)
+            {
+                Log.E("main.translate", ex.ToString());
+                try
+                {
+                    await SendMsg(message, Text.OOPS);
+                }
+                catch (Exception exx)
+                {
+                    Log.E("main.translate.try", exx.ToString());
+                }
+            }
             return;
         }
 
@@ -136,6 +154,9 @@ namespace LGBTCN.Bot
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(text))
+                    return Text.OOPS;
+
                 string result = $"Orgin: {text}\n";
                 text = text.Trim();
                 var en = _translateEN.Text(text).Trim();
